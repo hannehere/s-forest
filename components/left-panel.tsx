@@ -132,19 +132,19 @@ function EventCard({
       className={`
         p-3 rounded-lg bg-[#121215]/70 border-l-2 ${event.borderColor}
         ${isCritical ? "animate-critical-glow" : "border border-white/5"}
-        ${isSelected ? "ring-1 ring-white/40 bg-[#1a1a20]/90" : ""}
-        transition-all hover:bg-[#1a1a20]/80 cursor-pointer
+        ${isSelected ? "ring-1 ring-white/40 bg-[#1a1a20]/90 scale-[1.02]" : ""}
+        transition-all duration-300 ease-out hover:bg-[#1a1a20]/80 hover:scale-[1.02] hover:translate-x-1 cursor-pointer
+        active:scale-[0.98] active:opacity-80
       `}
     >
       <div className="flex items-start gap-3">
         <div
-          className={`p-2 rounded-lg ${
-            event.type === "critical"
+          className={`p-2 rounded-lg ${event.type === "critical"
               ? "bg-[#ff4444]/15 text-[#ff5544] shadow-[0_0_10px_rgba(255,68,68,0.3)]"
               : event.type === "warning"
                 ? "bg-[#ffaa33]/15 text-[#ffaa33]"
                 : "bg-[#00dd66]/15 text-[#00dd66]"
-          }`}
+            }`}
         >
           <Icon className="h-4 w-4" />
         </div>
@@ -163,13 +163,12 @@ function EventCard({
             <span
               className={`
               inline-block mt-2 px-2 py-0.5 rounded text-[10px] font-mono
-              ${
-                event.type === "critical"
+              ${event.type === "critical"
                   ? "bg-[#ff4444]/15 text-[#ff5544]"
                   : event.type === "warning"
                     ? "bg-[#ffaa33]/15 text-[#ffaa33]"
                     : "bg-[#4a9eff]/15 text-[#4a9eff]"
-              }
+                }
             `}
             >
               {event.badge}

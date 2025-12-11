@@ -47,16 +47,16 @@ export function CenterPanel({ selectedAlertId, onSelectAlert }: CenterPanelProps
 
         {/* Map Controls Overlay */}
         <TooltipProvider delayDuration={200}>
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-[#0a0a12]/90 backdrop-blur-xl rounded-lg p-2 border border-[#2a3a4a]/50 z-[1000]">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-[#0a0a12]/90 backdrop-blur-xl rounded-lg p-2 border border-[#2a3a4a]/50 z-[1000] transition-all duration-300 hover:bg-[#0a0a12]/95 hover:border-[#3a4a5a]/60">
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => setThermalMode(!thermalMode)}
-                  className={`bg-[#0a0a12]/90 border-[#2a3a4a]/50 text-[#6a8aaa] hover:bg-[#1a2a3a]/50 hover:text-[#8ab0d0] font-mono text-xs ${thermalMode ? "ring-1 ring-[#ff5533] text-[#ff5533] border-[#ff5533]/40" : ""}`}
+                  className={`bg-[#0a0a12]/90 border-[#2a3a4a]/50 text-[#6a8aaa] hover:bg-[#1a2a3a]/50 hover:text-[#8ab0d0] font-mono text-xs transition-all duration-200 hover:scale-105 active:scale-95 ${thermalMode ? "ring-1 ring-[#ff5533] text-[#ff5533] border-[#ff5533]/40 shadow-[0_0_15px_rgba(255,85,51,0.3)]" : ""}`}
                 >
-                  <ThermometerSun className={`h-3.5 w-3.5 mr-1.5 ${thermalMode ? "text-[#ff5533]" : ""}`} />
+                  <ThermometerSun className={`h-3.5 w-3.5 mr-1.5 transition-transform duration-200 ${thermalMode ? "text-[#ff5533] animate-pulse" : ""}`} />
                   Thermal
                 </Button>
               </TooltipTrigger>
@@ -71,9 +71,9 @@ export function CenterPanel({ selectedAlertId, onSelectAlert }: CenterPanelProps
                   variant="outline"
                   size="sm"
                   onClick={() => setShowHeatmap(!showHeatmap)}
-                  className={`bg-[#0a0a12]/90 border-[#2a3a4a]/50 text-[#6a8aaa] hover:bg-[#1a2a3a]/50 hover:text-[#8ab0d0] font-mono text-xs ${showHeatmap ? "ring-1 ring-[#ffaa33] text-[#ffaa33] border-[#ffaa33]/40" : ""}`}
+                  className={`bg-[#0a0a12]/90 border-[#2a3a4a]/50 text-[#6a8aaa] hover:bg-[#1a2a3a]/50 hover:text-[#8ab0d0] font-mono text-xs transition-all duration-200 hover:scale-105 active:scale-95 ${showHeatmap ? "ring-1 ring-[#ffaa33] text-[#ffaa33] border-[#ffaa33]/40 shadow-[0_0_15px_rgba(255,170,51,0.3)]" : ""}`}
                 >
-                  <Layers className={`h-3.5 w-3.5 mr-1.5 ${showHeatmap ? "text-[#ffaa33]" : ""}`} />
+                  <Layers className={`h-3.5 w-3.5 mr-1.5 transition-transform duration-200 ${showHeatmap ? "text-[#ffaa33]" : ""}`} />
                   Risk Zones
                 </Button>
               </TooltipTrigger>
@@ -87,9 +87,9 @@ export function CenterPanel({ selectedAlertId, onSelectAlert }: CenterPanelProps
                 <Button
                   variant="outline"
                   size="sm"
-                  className="bg-[#0a0a12]/90 border-[#2a3a4a]/50 text-[#6a8aaa] hover:bg-[#1a2a3a]/50 hover:text-[#8ab0d0] font-mono text-xs"
+                  className="bg-[#0a0a12]/90 border-[#2a3a4a]/50 text-[#6a8aaa] hover:bg-[#1a2a3a]/50 hover:text-[#8ab0d0] font-mono text-xs transition-all duration-200 hover:scale-105 active:scale-95"
                 >
-                  <Pentagon className="h-3.5 w-3.5 mr-1.5" />
+                  <Pentagon className="h-3.5 w-3.5 mr-1.5 transition-transform duration-200" />
                   Draw Area
                 </Button>
               </TooltipTrigger>
@@ -102,9 +102,9 @@ export function CenterPanel({ selectedAlertId, onSelectAlert }: CenterPanelProps
               <TooltipTrigger asChild>
                 <Button
                   size="sm"
-                  className="bg-[#00dd66] text-[#0a0a0a] hover:bg-[#00cc55] font-mono text-xs font-bold shadow-[0_0_20px_rgba(0,220,100,0.5),0_0_40px_rgba(0,220,100,0.2)]"
+                  className="bg-[#00dd66] text-[#0a0a0a] hover:bg-[#00cc55] font-mono text-xs font-bold shadow-[0_0_20px_rgba(0,220,100,0.5),0_0_40px_rgba(0,220,100,0.2)] transition-all duration-200 hover:scale-110 hover:shadow-[0_0_30px_rgba(0,220,100,0.7),0_0_60px_rgba(0,220,100,0.4)] active:scale-95"
                 >
-                  <Send className="h-3.5 w-3.5 mr-1.5" />
+                  <Send className="h-3.5 w-3.5 mr-1.5 transition-transform duration-200 group-hover:translate-x-0.5" />
                   Dispatch Team
                 </Button>
               </TooltipTrigger>

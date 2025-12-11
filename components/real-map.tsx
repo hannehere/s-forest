@@ -154,6 +154,31 @@ export default function RealMap({
                 markersRef.current.push(marker)
             })
 
+            // Add risk heatmap zones (visible when showHeatmap is true)
+            const riskZones = [
+                { lat: 16.1350, lng: 108.2650, radius: 400, risk: "high", label: "Zone A - High Activity" },
+                { lat: 16.1100, lng: 108.2900, radius: 350, risk: "medium", label: "Zone B - Moderate Risk" },
+                { lat: 16.0900, lng: 108.2750, radius: 300, risk: "high", label: "Zone C - Trap Hotspot" },
+                { lat: 16.1200, lng: 108.3100, radius: 280, risk: "low", label: "Zone D - Patrolled" },
+            ]
+
+            if (showHeatmap) {
+                riskZones.forEach((zone) => {
+                    const color = zone.risk === "high" ? "#ff3333" : zone.risk === "medium" ? "#ffaa33" : "#00dd66"
+                    const circle = L.circle([zone.lat, zone.lng], {
+                        color: color,
+                        fillColor: color,
+                        fillOpacity: 0.15,
+                        weight: 2,
+                        dashArray: "5, 5",
+                        radius: zone.radius,
+                    })
+                        .addTo(map)
+                        .bindPopup(`<div style="color: #000; font-family: monospace;"><strong>${zone.label}</strong><br/>Risk Level: ${zone.risk.toUpperCase()}</div>`)
+                    markersRef.current.push(circle)
+                })
+            }
+
             // Sơn Trà Peninsula boundary - TIGHT to actual coastline only
             const sonTraBoundary = L.polygon(
                 [
@@ -227,7 +252,7 @@ export default function RealMap({
                 mapRef.current = null
             }
         }
-    }, [])
+    }, [showHeatmap])
 
     // Handle thermal mode toggle
     useEffect(() => {
